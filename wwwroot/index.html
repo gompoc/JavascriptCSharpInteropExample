@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Example</title>
+    <base href="/" />
+    <script src="_framework/blazor.webassembly.js"></script>
+</head>
+
+<label for="firstNumber">First Number:</label>
+<input type="number" id="firstNumber" name="firstNumber" value="0">
+
+<label for="secondNumber">Second Number:</label>
+<input type="number" id="secondNumber" name="secondNumber" value="0">
+
+<button type="button" onclick="getSum()">Log Sum</button>
+
+<script>
+    function jsSum(x, y) {
+        return x + y;
+    }
+    function getSum() {
+        DotNet.invokeMethodAsync(
+            'ExampleProject',
+            'Sum',
+            parseInt(document.getElementById('firstNumber').value),
+            parseInt(document.getElementById('secondNumber').value)
+        ).then(data => {
+            console.log(data);
+        });
+    }
+</script>
+<body>
+<div id="app">
+
+</div>
+</body>
+
+
+</html>

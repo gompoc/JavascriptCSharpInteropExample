@@ -1,0 +1,12 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JS;
+
+
+@code {
+    public static IJSRuntime JSRuntime;
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("JavascriptComponent OnInit()");
+        JSRuntime = JS;
+    }
+}
